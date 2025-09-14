@@ -1,1 +1,43 @@
+Raspberry Pi Pico – Operation Trinetra: AirShield
+Logging & Permanent Storage Layer for Real-Time Wireless Security
+📌 Role of Raspberry Pi Pico
 
+The Raspberry Pi Pico acts as the data logger and storage controller in the AirShield system.
+
+Its main responsibilities include:
+
+Receiving filtered data from the Arduino Uno
+
+Maintaining permanent logs of attacker details on an SD card
+
+Storing:
+
+Attacker IP Address
+
+MAC Address
+
+Reason for Blocking
+
+Timestamp of detection
+
+Ensuring logs are tamper-proof and permanent for later forensic analysis
+
+⚙️ Features
+
+✔️ SD card-based permanent record-keeping
+✔️ Lightweight but structured log storage (CSV/JSON format)
+✔️ Real-time logging of threats detected by ESP8266 + Arduino Uno
+✔️ Timestamping for forensic accuracy
+✔️ Buffer mechanism for continuous packet flow
+
+🔄 Data Flow
+
+ESP8266 captures suspicious activity and forwards it to Arduino Uno
+
+Arduino Uno filters and tags data (valid/suspicious/blocked)
+
+Raspberry Pi Pico receives filtered data via serial interface
+
+Logs detailed attacker information into the SD card
+
+Data is later accessed by the Web Dashboard for visualization
