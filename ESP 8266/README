@@ -1,1 +1,42 @@
+ESP8266 – Operation Trinetra: AirShield
+Wi-Fi Capture & Threat Detection Module
+📌 Role of ESP8266
 
+The ESP8266 is the frontline security sensor in AirShield.
+It acts as the primary Wi-Fi capture and monitoring unit, responsible for detecting suspicious network activity before it reaches the defense network.
+
+Its responsibilities include:
+
+Capturing Wi-Fi signals & packets using its onboard Wi-Fi radio + external Atheros AR9271 adapter
+
+Monitoring packet frequency and patterns
+
+Detecting unauthorized access attempts and scanning/probing attacks
+
+Performing preliminary analytics on packets before forwarding to Arduino Uno
+
+⚙️ Features
+
+✔️ Continuous Wi-Fi packet sniffing
+✔️ Works with Atheros AR9271 Wi-Fi Adapter for extended monitoring range
+✔️ Detects:
+
+Probe requests
+
+Unauthorized associations
+
+Packet flooding attacks
+✔️ Extracts attacker IP, MAC, and packet metadata
+✔️ Forwards structured alerts to Arduino Uno for filtering
+
+🔄 Data Flow
+
+ESP8266 + AR9271 scans nearby Wi-Fi traffic
+
+Detects suspicious activity (e.g., scanning, spoofing attempts)
+
+Extracts packet info: IP, MAC, signal strength, event type
+
+Sends data via UART to Arduino Uno
+
+Arduino applies filtering → Raspberry Pi Pico stores permanent logs
