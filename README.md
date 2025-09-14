@@ -1,81 +1,35 @@
-Operation Trinetra: AirShield
-Real-Time Wireless Security for Defense Networks
+Arduino Uno – Operation Trinetra: AirShield
+Interface & Filtering Layer for Real-Time Wireless Security
+📌 Role of Arduino Uno
 
-📌 Problem Statement
+The Arduino Uno acts as the intermediate controller between the ESP8266 (Wi-Fi capture module) and the Raspberry Pi Pico (logging & storage unit).
 
-Military Wi-Fi networks are at risk from scanning and probing attacks.
-Current systems cannot detect, block, or log these threats effectively.
+Its primary purpose is to:
 
-🚀 Solution – AirShield
+Filter incoming data packets received from the ESP8266
 
-AirShield is a hardware-based Wi-Fi security system built to monitor, analyze, and protect wireless networks in real-time, specifically designed for defense and critical infrastructure.
+Manage requests (packet validation, communication handshakes)
 
-It provides:
+Forward authorized data to the Raspberry Pi Pico for permanent logging
 
-Real-time packet monitoring
-Automated threat detection & blocking
-Permanent attacker logging
-Web-based monitoring dashboard
+Ensure reliable communication between modules
 
-⚙️ System Architecture
-🔹 Components
+⚙️ Features
 
-ESP8266
+✔️ Packet pre-processing and filtering
+✔️ Command relay between ESP8266 and Raspberry Pi Pico
+✔️ Basic attacker identification (flags suspicious packets)
+✔️ Low-level request management
+✔️ Lightweight & real-time response
 
-Primary networking module
-Captures Wi-Fi signals and packets
-Works with Atheros AR9271 Wi-Fi adapter
-Detects unauthorized access attempts & suspicious activities
+🔄 Data Flow
 
-Arduino Uno
+ESP8266 captures Wi-Fi packets & suspicious activity
 
-Acts as interface between ESP8266 and Raspberry Pi Pico
-Handles filtering, request management, and communication
+Arduino Uno receives packets via serial communication
 
-Raspberry Pi Pico
+Filters valid packets and marks suspected intrusions
 
-Stores detailed logs on SD card
-Logs include attacker IP, MAC, reason for blocking
-Ensures permanent record-keeping
+Forwards clean + flagged data to Raspberry Pi Pico
 
-SD Card Module
-
-Stores logs for post-event analysis
-
-Web-Based Dashboard
-
-Real-time packet flow monitoring (similar to Wireshark)
-Hardware health & device status reports
-Visualizations of active security events
-
-🛡️ Core Functionalities
-
-✔️ Real-time detection of unauthorized access & scanning attacks
-✔️ Automatic blocking of attackers, even if IP/MAC are spoofed
-✔️ Hardware-level packet inspection & analytics
-✔️ Centralized monitoring through a dashboard
-✔️ Permanent logging for audit & defense reporting
-
-📊 Workflow Overview
-
-ESP8266 + Atheros AR9271 → Captures Wi-Fi packets
-Arduino Uno → Filters & forwards to Raspberry Pi Pico
-Raspberry Pi Pico + SD Card → Logs attackers permanently
-Web Dashboard → Displays real-time threat analytics
-
-🔐 Why AirShield?
-
-Tailored for defense networks
-Works independently of OS-level software (hardware-layer protection)
-Resistant to IP/MAC spoofing
-Provides visibility & control in high-security environments
-
-📸 System Diagram (to be added)
-
-Include block diagram of ESP8266 → Arduino Uno → Raspberry Pi Pico → SD Card + Dashboard
-
-👨‍💻 Team Name - Born To Exploit
-
-1) Muthakeen Ansari
-2) Mohamed Yasir
-3) Mujahith
+Pico stores final logs on the SD card
